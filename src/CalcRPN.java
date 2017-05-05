@@ -71,7 +71,6 @@ public class CalcRPN {
         if(Double.valueOf(cmd) instanceof Double){
             aPilha.empilha(Double.parseDouble(cmd));
         }
-
         switch (cmd){
             case "+":
                 this.mais();
@@ -133,22 +132,27 @@ public class CalcRPN {
     }
 
     static void interfaceUsuario() throws IOException {
-        CalcRPN calc = new CalcRPN() ;
+        CalcRPN calc = new CalcRPN();
         String line;
+
         BufferedReader reader = new BufferedReader
                 (new InputStreamReader(System.in));
-        while((line = reader.readLine()) != null) {
+        while ((line = reader.readLine()) != null) {
             if (line.isEmpty())
                 continue;
             for (String s : line.split(" "))
                 calc.exec(s);
             System.out.println("Pilha = " + calc.aPilha);
         }
-        System.out.println("Ate logo");
+        throw new IOException("Deu problema!");
     }
     
     public static void main(String[] args) {
-        test();
+        try{
+            interfaceUsuario();
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
 
