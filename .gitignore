@@ -16,3 +16,5 @@ EDLab04.iml
 .idea/kotlinc.xml
 
 .idea/libraries/R_User_Library.xml
+
+*.class
