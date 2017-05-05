@@ -26,4 +26,8 @@ public class Pilha<Tipo> {
     public Tipo topo(){
         return this.conteudo.getFirst();
     }
+
+    public String toString(){
+        return conteudo.toString();
+    }
 }

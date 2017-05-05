@@ -67,25 +67,35 @@ public class CalcRPN {
         //throw new Error("a ser completado");
     }
 // interpretador de comandos
-    void exec(String cmd) {
-        if(Double.valueOf(cmd) instanceof Double){
-            aPilha.empilha(Double.parseDouble(cmd));
+    boolean testaDouble(String s){
+        try{
+            Double.parseDouble(s);
+            return true;
+        } catch (NumberFormatException e){
+            return false;
         }
-        switch (cmd){
-            case "+":
-                this.mais();
-                break;
-            case "-":
-                this.menos();
-                break;
-            case "*":
-                this.vezes();
-                break;
-            case "/":
-                this.dividido();
-                break;
-            default:
-                break;
+    }
+
+    void exec(String cmd) {
+        if(testaDouble(cmd)){
+            aPilha.empilha(Double.parseDouble(cmd));
+        } else {
+            switch (cmd){
+                case "+":
+                    this.mais();
+                    break;
+                case "-":
+                    this.menos();
+                    break;
+                case "*":
+                    this.vezes();
+                    break;
+                case "/":
+                    this.dividido();
+                    break;
+                default:
+                    break;
+            }
         }
 
     }
