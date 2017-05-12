@@ -61,6 +61,8 @@ public class CalcRPN {
         aPilha.empilha(resultado);
         //throw new Error("a ser completado");
     }
+
+
 // retorna o conteudo do topo da pilha
     Double resultado() {
         return aPilha.topo();
@@ -92,6 +94,9 @@ public class CalcRPN {
                     break;
                 case "/":
                     this.dividido();
+                    break;
+                case "clear":
+                    aPilha.reinicialize();
                     break;
                 default:
                     break;

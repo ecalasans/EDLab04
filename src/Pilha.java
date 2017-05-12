@@ -30,4 +30,8 @@ public class Pilha<Tipo> {
     public String toString(){
         return conteudo.toString();
     }
+
+    public void reinicialize(){
+        this.conteudo.clear();
+    }
 }
