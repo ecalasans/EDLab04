@@ -19,11 +19,11 @@ public class CalcRPN {
     // vari´aveis da instancia :
 // uma pilha para os c´alculos
    Pilha<Double> aPilha;
-   Pilha<Operacao> operacoes;
+   Pilha<Operacao> hist;
 // construtor
     CalcRPN () {
         this.aPilha = new Pilha<Double>();
-        this.operacoes = new Pilha<Operacao>();
+        this.hist = new Pilha<Operacao>();
         //throw new Error("a ser completado");
     }
 // Adi¸c~ao de dois elementos do topo da pilha
@@ -33,6 +33,8 @@ public class CalcRPN {
         operando2 =aPilha.desempilha() ;
         resultado = operando1+operando2;
         aPilha.empilha(resultado);
+        Operacao op = new Operacao('+', operando2, operando1);
+        hist.empilha(op);
         
 //        throw new Error("a ser completado");
     }
@@ -43,6 +45,8 @@ public class CalcRPN {
         operando2 =aPilha.desempilha() ;
         resultado = operando1-operando2;
         aPilha.empilha(resultado);
+        Operacao op = new Operacao('-', operando2, operando1);
+        hist.empilha(op);
         //throw new Error("a ser completado");
     }
 // Multiplica¸c~ao de dois elementos do topo da pilha
@@ -52,6 +56,9 @@ public class CalcRPN {
         operando2 =aPilha.desempilha() ;
         resultado = operando2*operando1;
         aPilha.empilha(resultado);
+        Operacao op = new Operacao('*', operando2, operando1);
+        hist.empilha(op);
+
        // throw new Error("a ser completado");
     }
 // Divis~ao de dois elementos no topo da pilha
@@ -61,6 +68,8 @@ public class CalcRPN {
         operando2 =aPilha.desempilha() ;
         resultado = operando2/operando1;
         aPilha.empilha(resultado);
+        Operacao op = new Operacao('/', operando2, operando1);
+        hist.empilha(op);
         //throw new Error("a ser completado");
     }
 
@@ -86,19 +95,28 @@ public class CalcRPN {
         } else {
             switch (cmd){
                 case "+":
+                    Operacao opMais = new Operacao(aPilha.topo());
+                    hist.empilha(opMais);
                     this.mais();
                     break;
                 case "-":
+                    Operacao opMenos = new Operacao(aPilha.topo());
+                    hist.empilha(opMenos);
                     this.menos();
                     break;
                 case "*":
+                    Operacao opVezes = new Operacao(aPilha.topo());
+                    hist.empilha(opVezes);
                     this.vezes();
                     break;
                 case "/":
+                    Operacao opDiv = new Operacao(aPilha.topo());
+                    hist.empilha(opDiv);
                     this.dividido();
                     break;
                 case "clear":
                     aPilha.reinicialize();
+                    hist.reinicialize();
                     break;
                 default:
                     break;

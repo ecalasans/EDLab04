@@ -34,4 +34,24 @@ public class Pilha<Tipo> {
     public void reinicialize(){
         this.conteudo.clear();
     }
+
+    public String toStringInverse(){
+        Pilha<Tipo> temp = new Pilha<Tipo>();
+
+        for (Tipo t: this.conteudo) {
+            temp.empilha(t);
+        }
+
+        String resultado = "[";
+
+        for(int i = 0; i < this.conteudo.size(); i++){
+            if(i < (this.conteudo.size() - 1)){
+                resultado += resultado + temp.desempilha() + ",";
+            } else {
+                resultado += "]";
+            }
+
+        }
+        return resultado;
+    }
 }
