@@ -18,3 +18,11 @@ EDLab04.iml
 .idea/libraries/R_User_Library.xml
 
 *.class
+
+.idea/uiDesigner.xml
+
+praticaMOD4_1.pdf
+
+src/CalcGUI.form
+
+src/CalcGUI.java
